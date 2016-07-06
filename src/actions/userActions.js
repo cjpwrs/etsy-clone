@@ -71,11 +71,11 @@ export function loginUser(user) {
             method: 'get'
           })
           .then(response => {
-            //console.log(response)
+            console.log(response)
             return response.json();
           })
           .then(cart => {
-            //console.log(cart);
+            console.log('this is the cart', cart);
             dispatch(loadShoppingCartSuccess(cart));
           })
       })

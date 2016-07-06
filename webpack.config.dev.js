@@ -2,7 +2,9 @@
  * Created by cjpowers on 6/21/16.
  */
 import webpack from 'webpack';
+//const webpack = require('webpack');
 import path from 'path';
+//const path = require('path');
 
 export default {
     debug: true,

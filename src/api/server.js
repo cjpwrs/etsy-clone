@@ -6,13 +6,43 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var massive = require('massive');
 var db = massive.connectSync({db : "testdb"});
+// const webpack = require('webpack');
+// const path = require('path');
+// const webpackConfig = require('../../webpack.config.dev');
+// const open = require('open');
 //console.log(db.tables);
 var app = express();
-
+//const compiler = webpack(webpackConfig);
 app.use(bodyParser.json());
 app.use(cors());
 
 var port = 3001;
+
+
+
+
+
+
+
+app.use(cors());
+// app.use(require('webpack-dev-middleware')(compiler, {
+//   noInfo: true,
+//   publicPath: webpackConfig.output.publicPath
+// }));
+//
+// app.use(require('webpack-hot-middleware')(compiler));
+//
+// app.get('*', function(req, res, next) {
+//   res.sendFile(path.join( __dirname, '../index.html'));
+//   next();
+// });
+
+
+
+
+
+
+
 
 var newProduct = ['glasses', 'Jewelry', 'I did', 'Finished Product', '2010-2016', 199.99, 10, 'http://images.clipartpanda.com/cookie-with-glasses-home_glasses.png', 1];
 let newUser = ['cjpwrs', 'CJ', 'Powers', 'cjpwrs@gmail.com', '253-651-5971', 'password', '1234 Sunset Ave', '', 'Buena Vista', 'CA', '90310']
