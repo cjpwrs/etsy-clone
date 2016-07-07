@@ -3,7 +3,9 @@
  */
 import * as types from './actionTypes';
 import userApi from '../api/mockUserApi';
-var config = require('../../config.json');
+//var hostString = "http://localhost:3001";
+var hostString = "";
+
 
 export function loadProductsSuccess(products){
   return { type: types.LOAD_PRODUCTS_SUCCESS, products }
@@ -30,7 +32,7 @@ myHeaders.append('Content-Type', 'application/json');
 export function loadUsers() {
   return function(dispatch) {
     //make actual call to server here
-    fetch(config.hostString,'/api/users', {method: 'get'})
+    fetch(hostString,'/api/users', {method: 'get'})
       .then(response => {
         return response.json()
       }).then(data => dispatch(loadUsersSuccess(data)));
@@ -40,7 +42,7 @@ export function loadUsers() {
 export function loadProducts(userId) {
   return function(dispatch) {
     console.log('entered load dispatch');
-    fetch(config.hostString,`/api/products/` + userId, {method: 'get'})
+    fetch(hostString,`/api/products/` + userId, {method: 'get'})
       .then(response => {
         console.log('This is my response when loading products', response);
         return response.json()})
@@ -53,7 +55,7 @@ export function loadProducts(userId) {
 
 export function loginUser(user) {
   return function(dispatch, getState) {
-    fetch(config.hostString,'/api/user/authenticate',
+    fetch(hostString,'/api/user/authenticate',
       {
         method: 'post',
         headers: myHeaders,
@@ -67,7 +69,7 @@ export function loginUser(user) {
       .then(user => {
         console.log(user);
         dispatch(loginUserSuccess(user));
-        fetch(config.hostString,'/api/cart/' + user.id,
+        fetch(hostString,'/api/cart/' + user.id,
           {
             method: 'get'
           })
@@ -86,7 +88,7 @@ export function loginUser(user) {
 
 export function registerUser(user) {
   return function(dispatch, getState) {
-    fetch(config.hostString,'/api/user/register',
+    fetch(hostString,'/api/user/register',
       {
         method: 'post',
         headers: myHeaders,
