@@ -8,6 +8,7 @@ var config = require('../config.json');
 var app = express();
 var massiveInstance = massive.connectSync({connectionString : config.connectionString})
 app.set('db', massiveInstance);
+var db = app.get('db');
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -79,7 +80,7 @@ app.post('/api/products', function(req, res) {
     console.log(req.body);
     db.products.save(req.body, function(err,updated){
         if(err) return res.json(err);
-        else return res.json(updated);
+        else return res.end(updated);
     });
 });
 
@@ -89,7 +90,7 @@ app.post('/api/user/register', function(req, res) {
     //users is the name of my table in the database
     db.users.save(req.body, function(err, response){
         if(!err) return res.json(req.body);
-        else  return res.json(err)
+        else  return res.end(err)
     })
 });
 
@@ -198,7 +199,7 @@ app.get('/api/cart/:id', function(req, res){
 app.delete('/api/products', function(req, res) {
     console.log(req.body);
     var id = req.body.id;
-    db.deleteProduct(id, function(err, response){
+    db.run("DELETE FROM products WHERE id=$1;",[id], function(err, response){
         console.log(response);
         return res.end(JSON.stringify(req.body));
     })
@@ -221,7 +222,7 @@ app.put('/api/products', function(req, res) {
 });
 
 app.get('*', function(req, res, next) {
-    res.sendFile(path.join( __dirname, '..dist/index.html'));
+    res.sendFile(path.join( __dirname, '../dist/index.html'));
 });
 
 app.listen(port, function() {
