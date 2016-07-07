@@ -17,7 +17,7 @@ export function loadShopperProducts(category) {
   if(category) query = '?category' + category;
   return function(dispatch) {
     //console.log('entered load dispatch');
-    fetch(`http://localhost:3001/api/shopper/products/` + query,{method: 'get'})
+    fetch(`/api/shopper/products/` + query,{method: 'get'})
       .then(response => {
         return response.json()})
       .then(data => {

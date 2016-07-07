@@ -29,7 +29,7 @@ myHeaders.append('Content-Type', 'application/json');
 export function loadUsers() {
   return function(dispatch) {
     //make actual call to server here
-    fetch('http://localhost:3001/api/users', {method: 'get'})
+    fetch('/api/users', {method: 'get'})
       .then(response => {
         return response.json()
       }).then(data => dispatch(loadUsersSuccess(data)));
@@ -39,7 +39,7 @@ export function loadUsers() {
 export function loadProducts(userId) {
   return function(dispatch) {
     console.log('entered load dispatch');
-    fetch(`http://localhost:3001/api/products/` + userId, {method: 'get'})
+    fetch(`/api/products/` + userId, {method: 'get'})
       .then(response => {
         console.log('This is my response when loading products', response);
         return response.json()})
@@ -52,7 +52,7 @@ export function loadProducts(userId) {
 
 export function loginUser(user) {
   return function(dispatch, getState) {
-    fetch('http://localhost:3001/api/user/authenticate',
+    fetch('/api/user/authenticate',
       {
         method: 'post',
         headers: myHeaders,
@@ -66,7 +66,7 @@ export function loginUser(user) {
       .then(user => {
         console.log(user);
         dispatch(loginUserSuccess(user));
-        fetch('http://localhost:3001/api/cart/' + user.id,
+        fetch('/api/cart/' + user.id,
           {
             method: 'get'
           })
@@ -85,7 +85,7 @@ export function loginUser(user) {
 
 export function registerUser(user) {
   return function(dispatch, getState) {
-    fetch('http://localhost:3001/api/user/register',
+    fetch('/api/user/register',
       {
         method: 'post',
         headers: myHeaders,

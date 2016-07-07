@@ -25,7 +25,7 @@ myHeaders.append('Content-Type', 'application/json');
 export function loadProducts(userId) {
   return function(dispatch) {
     console.log('entered load dispatch');
-      fetch(`http://localhost:3001/api/products/` + userId, {method: 'get'})
+      fetch(`/api/products/` + userId, {method: 'get'})
         .then(response => {
           return response.json()})
             .then(data => dispatch(loadProductsSuccess(data)));
@@ -36,7 +36,7 @@ export function saveProduct(product) {
   if(!product.id) {
     return function (dispatch, getState) {
       console.log(product);
-      fetch('http://localhost:3001/api/products', {
+      fetch('/api/products', {
         method: 'post',
         headers: myHeaders,
         mode: 'cors',
@@ -55,7 +55,7 @@ export function saveProduct(product) {
   else{
     return function (dispatch, getState) {
       console.log(product);
-      fetch('http://localhost:3001/api/products', {
+      fetch('/api/products', {
         method: 'put',
         headers: myHeaders,
         mode: 'cors',
@@ -77,7 +77,7 @@ export function deleteProduct(productId){
   console.log('entered delete product reducer function, product id is ', productId );
   return function (dispatch, getState) {
 
-    fetch('http://localhost:3001/api/products', {method: 'delete', headers: myHeaders, mode: 'cors', body: JSON.stringify({id: productId})})
+    fetch('/api/products', {method: 'delete', headers: myHeaders, mode: 'cors', body: JSON.stringify({id: productId})})
       .then(response => {return response.json()})
         .then(data => {
           console.log(data);
