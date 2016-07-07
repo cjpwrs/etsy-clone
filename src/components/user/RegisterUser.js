@@ -40,7 +40,6 @@ class RegisterUser extends React.Component {
     console.log('these are the state for my manage user page: ',this.state);
     return(
       <div>
-        <h1>Manage Users Page</h1>
         <RegisterUserForm
           onChange={this.updateUserState}
           onSave={this.sendRegisterUserRequest}

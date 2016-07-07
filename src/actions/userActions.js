@@ -3,6 +3,7 @@
  */
 import * as types from './actionTypes';
 import userApi from '../api/mockUserApi';
+var config = require('../../config.json');
 
 export function loadProductsSuccess(products){
   return { type: types.LOAD_PRODUCTS_SUCCESS, products }
@@ -29,7 +30,7 @@ myHeaders.append('Content-Type', 'application/json');
 export function loadUsers() {
   return function(dispatch) {
     //make actual call to server here
-    fetch('/api/users', {method: 'get'})
+    fetch(config.hostString,'/api/users', {method: 'get'})
       .then(response => {
         return response.json()
       }).then(data => dispatch(loadUsersSuccess(data)));
@@ -39,7 +40,7 @@ export function loadUsers() {
 export function loadProducts(userId) {
   return function(dispatch) {
     console.log('entered load dispatch');
-    fetch(`/api/products/` + userId, {method: 'get'})
+    fetch(config.hostString,`/api/products/` + userId, {method: 'get'})
       .then(response => {
         console.log('This is my response when loading products', response);
         return response.json()})
@@ -52,7 +53,7 @@ export function loadProducts(userId) {
 
 export function loginUser(user) {
   return function(dispatch, getState) {
-    fetch('/api/user/authenticate',
+    fetch(config.hostString,'/api/user/authenticate',
       {
         method: 'post',
         headers: myHeaders,
@@ -66,7 +67,7 @@ export function loginUser(user) {
       .then(user => {
         console.log(user);
         dispatch(loginUserSuccess(user));
-        fetch('/api/cart/' + user.id,
+        fetch(config.hostString,'/api/cart/' + user.id,
           {
             method: 'get'
           })
@@ -85,7 +86,7 @@ export function loginUser(user) {
 
 export function registerUser(user) {
   return function(dispatch, getState) {
-    fetch('/api/user/register',
+    fetch(config.hostString,'/api/user/register',
       {
         method: 'post',
         headers: myHeaders,

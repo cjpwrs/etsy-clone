@@ -52,7 +52,7 @@ class ManageProductPage extends React.Component {
 
     render() {
         return (
-            <ProductForm
+            <ProductForm 
               user={this.props.user}
               productCategories={categories}
               who_made_it = {who_made_it}

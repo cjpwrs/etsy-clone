@@ -15,7 +15,7 @@ app.use(cors());
 
 app.use(express.static('dist'));
 
-var port = 3001;
+var port = config.port;
 
 app.use(cors());
 
@@ -117,7 +117,7 @@ app.post('/api/cart', function(req, res) {
             return res.json(err);
         }
         else{
-            db.shoppingcartquery(req.body.userid, function(err, response){
+            db.run("select a.id, cartid, productid, a.quantity, b.ownerid as userid, title, price, image_url from cartitems a join shoppingcart b on a.cartid = b.id join products c on a.productid = c.id where b.ownerid = $1", [req.body.userid], function(err, response){
                 console.log(response);
                 return res.json(response);
             })
@@ -133,7 +133,7 @@ app.put('/api/cart', function(req, res) {
             return res.json(err);
         }
         else{
-            db.shoppingcartquery(req.body.userid, function(err, response){
+            db.run("select a.id, cartid, productid, a.quantity, b.ownerid as userid, title, price, image_url from cartitems a join shoppingcart b on a.cartid = b.id join products c on a.productid = c.id where b.ownerid = $1", [req.body.userid], function(err, response){
                 console.log(response);
                 return res.json(response);
             })
@@ -221,9 +221,9 @@ app.put('/api/products', function(req, res) {
     });
 });
 
-app.get('*', function(req, res, next) {
-    res.sendFile(path.join( __dirname, '../dist/index.html'));
-});
+// app.get('*', function(req, res, next) {
+//     res.sendFile(path.join( __dirname, '../dist/index.html'));
+// });
 
 app.listen(port, function() {
     console.log("Started server on port ", port);

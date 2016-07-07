@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 import userApi from '../api/mockUserApi';
+var config = require('../../config.json');
 
 export function loadProductsSuccess(products){
   return { type: types.LOAD_PRODUCTS_SUCCESS, products }
@@ -30,7 +31,7 @@ myHeaders.append('Content-Type', 'application/json');
 export function loadUsers() {
   return function(dispatch) {
     //make actual call to server here
-    fetch('/api/users', {method: 'get'})
+    fetch(config.hostString,'/api/users', {method: 'get'})
       .then(response => {
         return response.json()
       }).then(data => dispatch(loadUsersSuccess(data)));
@@ -40,7 +41,7 @@ export function loadUsers() {
 export function loadProducts(userId) {
   return function(dispatch) {
     //console.log('entered load dispatch');
-    fetch(`/api/products/` + userId, {method: 'get'})
+    fetch(config.hostString,`/api/products/` + userId, {method: 'get'})
       .then(response => {
         //console.log('This is my response when loading products', response);
         return response.json()})
@@ -50,7 +51,7 @@ export function loadProducts(userId) {
 
 export function loginUser(user) {
   return function(dispatch, getState) {
-    fetch('/api/user/authenticate',
+    fetch(config.hostString,'/api/user/authenticate',
       {
         method: 'post',
         headers: myHeaders,
@@ -86,7 +87,7 @@ export function updateCart(userid, productid, cartid, quantity=1, cart) {
         console.log('entered the put for updating cart item');
         cartitem.id = cart[i].id;
         cartitem.quantity= cart[i].quantity + 1;
-        fetch('/api/cart',
+        fetch(config.hostString,'/api/cart',
           {
             method: 'put',
             headers: myHeaders,
@@ -109,7 +110,7 @@ export function updateCart(userid, productid, cartid, quantity=1, cart) {
       console.log('heres the cart item', cartitem);
       if (!cartitem.cartid) {
         console.log('entered the if statement');
-        fetch('/api/cartcreate',
+        fetch(config.hostString,'/api/cartcreate',
           {
             method: 'post',
             headers: myHeaders,
@@ -124,7 +125,7 @@ export function updateCart(userid, productid, cartid, quantity=1, cart) {
             console.log(cart);
             cartitem = cart;
             dispatch(createCartSuccess(cart));
-            fetch('/api/cart',
+            fetch(config.hostString,'/api/cart',
               {
                 method: 'post',
                 headers: myHeaders,
@@ -142,7 +143,7 @@ export function updateCart(userid, productid, cartid, quantity=1, cart) {
           })
       }
       else {
-        fetch('/api/cart',
+        fetch(config.hostString,'/api/cart',
           {
             method: 'post',
             headers: myHeaders,
@@ -166,7 +167,7 @@ export function deleteCartItem(cartItemId){
   console.log('entered delete product reducer function, product id is ', cartItemId );
   return function (dispatch, getState) {
 
-    fetch('/api/cart', {method: 'delete', headers: myHeaders, mode: 'cors', body: JSON.stringify({id: cartItemId})})
+    fetch(config.hostString,'/api/cart', {method: 'delete', headers: myHeaders, mode: 'cors', body: JSON.stringify({id: cartItemId})})
       .then(response => {return response.json()})
       .then(data => {
         console.log(data);
@@ -175,6 +176,4 @@ export function deleteCartItem(cartItemId){
   };
 }
 
-/**
- * Created by cjpowers on 7/3/16.
- */
+
