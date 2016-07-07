@@ -1,16 +1,13 @@
-/**
- * Created by cjpowers on 7/6/16.
- */
-/**
- * Created by cjpowers on 6/25/16.
- */
 var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var massive = require('massive');
 var path = require('path');
-var db = massive.connectSync({db : "testdb"});
+var config = require('../config.json');
+//var db = massive.connectSync({db : "testdb"});
 var app = express();
+var massiveInstance = massive.connectSync({connectionString : config.connectionString})
+app.set('db', massiveInstance);
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -19,25 +16,7 @@ app.use(express.static('dist'));
 
 var port = 3001;
 
-
-
-
-
-
-
 app.use(cors());
-
-app.get('*', function(req, res, next) {
-  res.sendFile(path.join( __dirname, '..dist/index.html'));
-  next();
-});
-
-
-
-
-
-
-
 
 var newProduct = ['glasses', 'Jewelry', 'I did', 'Finished Product', '2010-2016', 199.99, 10, 'http://images.clipartpanda.com/cookie-with-glasses-home_glasses.png', 1];
 var newUser = ['cjpwrs', 'CJ', 'Powers', 'cjpwrs@gmail.com', '253-651-5971', 'password', '1234 Sunset Ave', '', 'Buena Vista', 'CA', '90310']
@@ -196,7 +175,7 @@ app.get('/api/shopper/products', function(req, res) {
 
 
 app.get('/api/products/:id', function(req, res) {
-    db.queryProducts(req.params.id, function(err, response){
+    db.run("select a.* from products a join users b on a.ownerid = b.id where b.username = $1", [req.params.id], function(err, response){
         console.log(response);
         return res.json(response);
     });
@@ -210,7 +189,7 @@ app.get('/api/users', function(req, res){
 });
 
 app.get('/api/cart/:id', function(req, res){
-    db.shoppingcartquery(req.params.id, function(err, response){
+    db.run("select a.id, cartid, productid, a.quantity, b.ownerid as userid, title, price, image_url from cartitems a join shoppingcart b on a.cartid = b.id join products c on a.productid = c.id where b.ownerid = $1", [req.params.id], function(err, response){
         console.log(response);
         return res.json(response);
     })
@@ -239,6 +218,10 @@ app.put('/api/products', function(req, res) {
         if(err) return res.json(err);
         else return res.json(updated);
     });
+});
+
+app.get('*', function(req, res, next) {
+    res.sendFile(path.join( __dirname, '..dist/index.html'));
 });
 
 app.listen(port, function() {
