@@ -1,6 +1,4 @@
-CREATE TABLE products
-  (
-
+CREATE TABLE products (
   id bigserial primary key,
   title varchar(1124),
   category varchar(64),
@@ -12,5 +10,4 @@ CREATE TABLE products
   image_url varchar(1000),
   description varchar(5000),
   ownerid int references users(id)
-
   );

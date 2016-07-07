@@ -1,10 +1,8 @@
-/**
- * Created by cjpowers on 6/21/16.
- */
+/*eslint-disable import/default*/
 import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
-import configureStore from './store/configureStore';
+import configureStore from './store/configureStore.dev';
 import {Provider} from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import routes from './routes';

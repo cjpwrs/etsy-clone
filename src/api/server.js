@@ -6,13 +6,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var massive = require('massive');
 var db = massive.connectSync({db : "testdb"});
-// const webpack = require('webpack');
-// const path = require('path');
-// const webpackConfig = require('../../webpack.config.dev');
-// const open = require('open');
-//console.log(db.tables);
 var app = express();
-//const compiler = webpack(webpackConfig);
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -25,13 +19,7 @@ var port = 3001;
 
 
 app.use(cors());
-// app.use(require('webpack-dev-middleware')(compiler, {
-//   noInfo: true,
-//   publicPath: webpackConfig.output.publicPath
-// }));
-//
-// app.use(require('webpack-hot-middleware')(compiler));
-//
+
 // app.get('*', function(req, res, next) {
 //   res.sendFile(path.join( __dirname, '../index.html'));
 //   next();
@@ -45,8 +33,8 @@ app.use(cors());
 
 
 var newProduct = ['glasses', 'Jewelry', 'I did', 'Finished Product', '2010-2016', 199.99, 10, 'http://images.clipartpanda.com/cookie-with-glasses-home_glasses.png', 1];
-let newUser = ['cjpwrs', 'CJ', 'Powers', 'cjpwrs@gmail.com', '253-651-5971', 'password', '1234 Sunset Ave', '', 'Buena Vista', 'CA', '90310']
-let shoppingcartitem = {
+var newUser = ['cjpwrs', 'CJ', 'Powers', 'cjpwrs@gmail.com', '253-651-5971', 'password', '1234 Sunset Ave', '', 'Buena Vista', 'CA', '90310']
+var shoppingcartitem = {
   "cartid": 1,
   "productid": 23,
   "quantity": 5
@@ -223,7 +211,7 @@ app.get('/api/cart/:id', function(req, res){
 
 app.delete('/api/products', function(req, res) {
   console.log(req.body);
-  let id = req.body.id;
+  var id = req.body.id;
   db.deleteProduct(id, function(err, response){
     console.log(response);
     return res.end(JSON.stringify(req.body));
@@ -232,7 +220,7 @@ app.delete('/api/products', function(req, res) {
 
 app.delete('/api/cart', function(req, res) {
   console.log(req.body);
-  let id = req.body.id;
+  var id = req.body.id;
   db.run("delete from cartitems where id = $1", [id], function(err, response){
     if(err) res.end(JSON.stringify(err));
     else res.end(JSON.stringify(req.body));

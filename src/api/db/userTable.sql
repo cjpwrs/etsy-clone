@@ -1,5 +1,4 @@
-CREATE TABLE users
- (
+CREATE TABLE users(
      id bigserial primary key,
      username varchar(124),
      firstname varchar(64),

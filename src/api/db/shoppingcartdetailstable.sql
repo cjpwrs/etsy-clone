@@ -7,7 +7,6 @@ create table cartitems (
   cartid int not null references shoppingcart(id),
   productid int not null references products(id),
   quantity int not null
-
 );
 
 insert into cartitems (cartid, productid, quantity)
