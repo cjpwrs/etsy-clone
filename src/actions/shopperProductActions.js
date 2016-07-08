@@ -1,8 +1,8 @@
 /**
  * Created by cjpowers on 7/1/16.
  */
-//var hostString = "http://localhost:3001";
-var hostString = "";
+var hostString = "http://localhost:3001";
+// var hostString = "";
 import * as types from './actionTypes';
 
 export function loadShopperProductsSuccess(products){
@@ -19,7 +19,7 @@ export function loadShopperProducts(category) {
   if(category) query = '?category' + category;
   return function(dispatch) {
     //console.log('entered load dispatch');
-    fetch(hostString,`/api/shopper/products/` + query,{method: 'get'})
+    fetch(hostString + '/api/shopper/products/' + query,{method: 'get'})
       .then(response => {
         return response.json()})
       .then(data => {

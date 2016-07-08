@@ -1,8 +1,8 @@
 /**
  * Created by cjpowers on 6/26/16.
  */
-//var hostString = "http://localhost:3001";
-var hostString = "";
+var hostString = "http://localhost:3001";
+// var hostString = "";
 
 import * as types from './actionTypes';
 
@@ -28,7 +28,7 @@ myHeaders.append('Content-Type', 'application/json');
 export function loadProducts(userId) {
   return function(dispatch) {
     console.log('entered load dispatch');
-      fetch(hostString,`/api/products/` + userId, {method: 'get'})
+      fetch(hostString+`/api/products/` + userId, {method: 'get'})
         .then(response => {
           return response.json()})
             .then(data => dispatch(loadProductsSuccess(data)));
@@ -39,7 +39,7 @@ export function saveProduct(product) {
   if(!product.id) {
     return function (dispatch, getState) {
       console.log(product);
-      fetch(hostString,'/api/products', {
+      fetch(hostString+'/api/products', {
         method: 'post',
         headers: myHeaders,
         mode: 'cors',
@@ -58,7 +58,7 @@ export function saveProduct(product) {
   else{
     return function (dispatch, getState) {
       console.log(product);
-      fetch(hostString,'/api/products', {
+      fetch(hostString+'/api/products', {
         method: 'put',
         headers: myHeaders,
         mode: 'cors',
@@ -80,7 +80,7 @@ export function deleteProduct(productId){
   console.log('entered delete product reducer function, product id is ', productId );
   return function (dispatch, getState) {
 
-    fetch(hostString,'/api/products', {method: 'delete', headers: myHeaders, mode: 'cors', body: JSON.stringify({id: productId})})
+    fetch(hostString+'/api/products', {method: 'delete', headers: myHeaders, mode: 'cors', body: JSON.stringify({id: productId})})
       .then(response => {return response.json()})
         .then(data => {
           console.log(data);

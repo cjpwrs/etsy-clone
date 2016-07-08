@@ -1,7 +1,7 @@
 import * as types from './actionTypes';
 import userApi from '../api/mockUserApi';
-//var hostString = "http://localhost:3001";
-var hostString = "";
+var hostString = "http://localhost:3001";
+// var hostString = "";
 
 export function loadProductsSuccess(products){
   return { type: types.LOAD_PRODUCTS_SUCCESS, products }
@@ -32,7 +32,7 @@ myHeaders.append('Content-Type', 'application/json');
 export function loadUsers() {
   return function(dispatch) {
     //make actual call to server here
-    fetch(hostString,'/api/users', {method: 'get'})
+    fetch(hostString+'/api/users', {method: 'get'})
       .then(response => {
         return response.json()
       }).then(data => dispatch(loadUsersSuccess(data)));
@@ -42,7 +42,7 @@ export function loadUsers() {
 export function loadProducts(userId) {
   return function(dispatch) {
     //console.log('entered load dispatch');
-    fetch(hostString,`/api/products/` + userId, {method: 'get'})
+    fetch(hostString+`/api/products/` + userId, {method: 'get'})
       .then(response => {
         //console.log('This is my response when loading products', response);
         return response.json()})
@@ -52,7 +52,7 @@ export function loadProducts(userId) {
 
 export function loginUser(user) {
   return function(dispatch, getState) {
-    fetch(hostString,'/api/user/authenticate',
+    fetch(hostString+'/api/user/authenticate',
       {
         method: 'post',
         headers: myHeaders,
@@ -88,7 +88,7 @@ export function updateCart(userid, productid, cartid, quantity=1, cart) {
         console.log('entered the put for updating cart item');
         cartitem.id = cart[i].id;
         cartitem.quantity= cart[i].quantity + 1;
-        fetch(hostString,'/api/cart',
+        fetch(hostString+'/api/cart',
           {
             method: 'put',
             headers: myHeaders,
@@ -111,7 +111,7 @@ export function updateCart(userid, productid, cartid, quantity=1, cart) {
       console.log('heres the cart item', cartitem);
       if (!cartitem.cartid) {
         console.log('entered the if statement');
-        fetch(hostString,'/api/cartcreate',
+        fetch(hostString+'/api/cartcreate',
           {
             method: 'post',
             headers: myHeaders,
@@ -126,7 +126,7 @@ export function updateCart(userid, productid, cartid, quantity=1, cart) {
             console.log(cart);
             cartitem = cart;
             dispatch(createCartSuccess(cart));
-            fetch(hostString,'/api/cart',
+            fetch(hostString+'/api/cart',
               {
                 method: 'post',
                 headers: myHeaders,
@@ -144,7 +144,7 @@ export function updateCart(userid, productid, cartid, quantity=1, cart) {
           })
       }
       else {
-        fetch(hostString,'/api/cart',
+        fetch(hostString+'/api/cart',
           {
             method: 'post',
             headers: myHeaders,
@@ -168,7 +168,7 @@ export function deleteCartItem(cartItemId){
   console.log('entered delete product reducer function, product id is ', cartItemId );
   return function (dispatch, getState) {
 
-    fetch(hostString,'/api/cart', {method: 'delete', headers: myHeaders, mode: 'cors', body: JSON.stringify({id: cartItemId})})
+    fetch(hostString+'/api/cart', {method: 'delete', headers: myHeaders, mode: 'cors', body: JSON.stringify({id: cartItemId})})
       .then(response => {return response.json()})
       .then(data => {
         console.log(data);

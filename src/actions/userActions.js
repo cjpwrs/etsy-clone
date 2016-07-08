@@ -2,9 +2,8 @@
  * Created by cjpowers on 6/26/16.
  */
 import * as types from './actionTypes';
-import userApi from '../api/mockUserApi';
-//var hostString = "http://localhost:3001";
-var hostString = "";
+var hostString = "http://localhost:3001";
+// var hostString = "";
 
 
 export function loadProductsSuccess(products){
@@ -32,7 +31,7 @@ myHeaders.append('Content-Type', 'application/json');
 export function loadUsers() {
   return function(dispatch) {
     //make actual call to server here
-    fetch(hostString,'/api/users', {method: 'get'})
+    fetch(hostString+'/api/users', {method: 'get'})
       .then(response => {
         return response.json()
       }).then(data => dispatch(loadUsersSuccess(data)));
@@ -42,7 +41,7 @@ export function loadUsers() {
 export function loadProducts(userId) {
   return function(dispatch) {
     console.log('entered load dispatch');
-    fetch(hostString,`/api/products/` + userId, {method: 'get'})
+    fetch(hostString+'/api/products/' + userId, {method: 'get'})
       .then(response => {
         console.log('This is my response when loading products', response);
         return response.json()})
@@ -55,7 +54,7 @@ export function loadProducts(userId) {
 
 export function loginUser(user) {
   return function(dispatch, getState) {
-    fetch(hostString,'/api/user/authenticate',
+    fetch(hostString+'/api/user/authenticate',
       {
         method: 'post',
         headers: myHeaders,
@@ -69,7 +68,7 @@ export function loginUser(user) {
       .then(user => {
         console.log(user);
         dispatch(loginUserSuccess(user));
-        fetch(hostString,'/api/cart/' + user.id,
+        fetch(hostString+'/api/cart/' + user.id,
           {
             method: 'get'
           })
@@ -88,7 +87,7 @@ export function loginUser(user) {
 
 export function registerUser(user) {
   return function(dispatch, getState) {
-    fetch(hostString,'/api/user/register',
+    fetch(hostString+'/api/user/register',
       {
         method: 'post',
         headers: myHeaders,
