@@ -1,8 +1,8 @@
 /**
  * Created by cjpowers on 7/1/16.
  */
-var hostString = "http://localhost:3001";
-// var hostString = "";
+// var hostString = "http://localhost:3001";
+var hostString = "";
 import * as types from './actionTypes';
 
 export function loadShopperProductsSuccess(products){

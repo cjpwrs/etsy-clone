@@ -1,7 +1,7 @@
 import * as types from './actionTypes';
 import userApi from '../api/mockUserApi';
-var hostString = "http://localhost:3001";
-// var hostString = "";
+// var hostString = "http://localhost:3001";
+var hostString = "";
 
 export function loadProductsSuccess(products){
   return { type: types.LOAD_PRODUCTS_SUCCESS, products }
