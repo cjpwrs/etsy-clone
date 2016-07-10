@@ -10,7 +10,7 @@ import CategorySelector from '../common/CategorySelector';
 class HomePage extends React.Component {
   render() {
     return (
-      <div>
+      <div className="homepage-main-body">
         <Banner />
         <SearchBar />
         <CategorySelector />

@@ -14,6 +14,9 @@ const ProductForm = ({ product, user, className, productCategories, who_made_it,
 
           <h4>Image URL<span className="asterisk">*</span></h4>
           <TextInput
+            type="file" images="images" accept="image/*"/>
+
+          <TextInput
             type="text"
             name="image_url"
             label="image"

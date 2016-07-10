@@ -98,12 +98,53 @@ nav Link:hover {
 .header-logo {
   font-size: 30px;
   font-family: serif;
+  color: #F56400;
+}
+
+.header-logo:hover {
+  color: #F56400;
+}
+
+.header-register-button {
+  background: none;
+  border: none;
+  color: #0195BE;
+}
+
+.header-signin-button {
+  background: none;
+  border: solid .5px #0195BE;
+  color: #0195BE;
+  border-radius: 2px;
+  height: 32px;
+  width: 65px;
+}
+
+.header-signin-button:hover {
+  background: lightcyan;
+}
+
+.header-option-large {
+  display: none;
+  color: #666666;
+  font-size: 14px;
+}
+
+.header-logo-large {
+  display: none;
 }
 
 .header-icon-holder {
   height: 100%;
   float: right;
   display: flex;
+  align-items: center;
+}
+
+.header-individual-option-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -119,6 +160,9 @@ nav Link:hover {
 .nav-img {
   height: 26px;
   border: solid lightgray .5px;
+}
+
+.header-top {
 }
 
 .circle {
@@ -140,10 +184,14 @@ nav Link:hover {
 
 
 /*Home Page Styles*/
+.homepage-main-body {
+  background: #F5F5F1;
+}
+
 .banner-container {
   height: 152px;
   width: 100vw;
-  background: url('https://img0.etsystatic.com/042/1/6297544/il_570xN.655718834_dec0.jpg') no-repeat center;
+  background: url('https://img1.etsystatic.com/site-assets/vesta-homepage-headers-v3/saressadesigns_249056175_2020x335.jpg') no-repeat center;
 
 }
 
@@ -183,12 +231,20 @@ nav Link:hover {
 }
 
 .category-box{
+  background: #fff;
   height: 46px;
+  border: solid lightgrey .5px;
+  position: relative;
+}
+
+.category-pieces {
   display: flex;
   flex-direction: row;
   align-items: center;
-  border: solid lightgrey .5px;
-  position: relative;
+}
+
+.category-img {
+  display: none;
 }
 
 .category-box:hover {
@@ -548,4 +604,107 @@ nav Link:hover {
   color: #fff;
   border: solid .5px lightgrey;
   border-radius: 3px;
+}
+
+
+
+/* Media Queries */
+@media (min-width: 421px) {
+  .header-logo-large {
+    display: inline-block;
+  }
+  .header-logo {
+    margin-top: 150px;
+  }
+  nav {
+    height: 62px;
+
+  }
+}
+
+@media (min-width: 480px) {
+  .banner-container{
+    height: 200px;
+  }
+
+  .category-holder {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .category-small {
+    display: none;
+  }
+  .category-box{
+    width: 160px;
+    height: 160px;
+    margin-bottom: 15px;
+
+  }
+
+  .category-img {
+    height: 75%;
+    width: 100%;
+    display: inline-block;
+  }
+
+  .category-img img {
+    max-height: 100%;
+    width: 100%;
+  }
+
+  .category-pieces {
+    margin-left: 10px;
+  }
+}
+
+@media (min-width: 640px) {
+  .banner-container{
+    height: 225px;
+  }
+  .category-box{
+    width: 225px;
+    height: 225px;
+    margin-bottom: 15px;
+
+  }
+}
+
+@media (min-width: 900px) {
+  nav {
+    height: 82px;
+    padding-left: 30px;
+    padding-right: 50px;
+
+  }
+  .header-logo {
+    font-size: 42px;
+  }
+
+  .banner-container{
+    height: 278px;
+  }
+  .category-box{
+    width: 130px;
+    height: 140px;
+    margin-bottom: 15px;
+
+  }
+  .header-individual-option-holder {
+    border-left: solid .5px lightgrey;
+    padding-left: 18px;
+  }
+}
+
+@media (min-width: 766px){
+  .header-option-large {
+    display: inline-block;
+  }
+}
+
+@media (min-width: 1680px) {
+  .banner-container{
+    height: 330px;
+  }
 }

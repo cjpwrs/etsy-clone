@@ -19,25 +19,25 @@ const Header = (userLoggedIn, user) => {
   if(userLoggedIn.userLoggedIn){
     headerOptions = (
       <div className="header-icon-holder">
-        <Link className="first-icon" to="/"><span className="glyphicon glyphicon-home"></span></Link>
-        <a className="nav-icon" href=""><span className="glyphicon glyphicon-heart"></span></a>
-        <Link className="nav-icon" to="products"><img className="nav-img" src="https://www.etsy.com/images/avatars/default_shop_icon_75x75.png" alt=""/></Link>
-        <Link className="nav-icon" to="user/register"><img className="nav-img circle" src="https://www.etsy.com/images/avatars/default_avatar_75x75.png" alt=""/></Link>
-        <Link className="nav-icon" to="cart"><span className="glyphicon glyphicon-shopping-cart"></span></Link>
+        <Link className="first-icon" to="/"><div className="header-individual-option-holder"><div className="header-top"><span className="glyphicon glyphicon-home"></span></div><span className="header-option-large">Home</span></div></Link>
+        <Link className="nav-icon" to="products"><div className="header-individual-option-holder"><div className="header-top"><span className="glyphicon glyphicon-heart"></span></div><span className="header-option-large">Favorites</span></div></Link>
+        <Link className="nav-icon" to="products"><div className="header-individual-option-holder"><div className="header-top"><img className="nav-img" src="https://www.etsy.com/images/avatars/default_shop_icon_75x75.png" alt=""/></div><span className="header-option-large">Your shop</span></div></Link>
+        <Link className="nav-icon" to="user/register"><div className="header-individual-option-holder"><div className="header-top"><img className="nav-img circle" src="https://www.etsy.com/images/avatars/default_avatar_75x75.png" alt=""/></div><span className="header-option-large">You</span></div></Link>
+        <Link className="nav-icon" to="cart"><div className="header-individual-option-holder"><div className="header-top"><span className="glyphicon glyphicon-shopping-cart"></span></div><span className="header-option-large">Cart</span></div></Link>
       </div>
     )
   } else {
     headerOptions = (
       <div className="header-icon-holder">
-        <Link className="user-not-logged-in nav-icon first-icon" to="user/register"><button>Sell</button></Link>
-        <Link className="user-not-logged-in nav-icon first-icon" to="user/signin"><button>Sign In</button></Link>
+        <Link className="user-not-logged-in nav-icon first-icon" to="user/register"><button className="header-register-button">Register</button></Link>
+        <Link className="user-not-logged-in nav-icon first-icon" to="user/signin"><button className="header-signin-button">Sign In</button></Link>
         <Link className="nav-icon" to="cart"><span className="glyphicon glyphicon-shopping-cart"></span></Link>
       </div>
     )
   }
   return (
     <nav>
-      <IndexLink className="header-logo" to="/" activeClassName="active">E</IndexLink>
+      <IndexLink className="header-logo" to="/">F<span className="header-logo-large">etsy</span></IndexLink>
         {headerOptions}
     </nav>
   );
