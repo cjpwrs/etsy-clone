@@ -12,7 +12,8 @@ class HomePage extends React.Component {
     return (
       <div className="homepage-main-body">
         <Banner />
-        <SearchBar />
+        <div className="home-page-search-bar-big"><SearchBar /></div>
+        <h2 className="home-page-headers">Shop by category</h2>
         <CategorySelector />
       </div>
     );

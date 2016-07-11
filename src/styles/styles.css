@@ -212,7 +212,28 @@ nav a:visited {
   height: 152px;
   width: 100vw;
   background: url('https://img1.etsystatic.com/site-assets/vesta-homepage-headers-v3/saressadesigns_249056175_2020x335.jpg') no-repeat center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
+.banner-phrase {
+  color: #fff;
+  width: 50%;
+  margin-left: 10px;
+}
+
+.banner-phrase h2 {
+  font-size: 20px;
+}
+
+.banner-search {
+  display: none;
+}
+
+.home-page-headers {
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .banner-img {
@@ -248,6 +269,7 @@ nav a:visited {
   margin: auto;
   width: 95%;
   border-radius: 4px;
+  max-width: 1000px;
 }
 
 .category-box{
@@ -684,6 +706,26 @@ nav a:visited {
   .banner-container{
     height: 200px;
   }
+  .banner-phrase {
+    color: #fff;
+    width: 65%;
+    margin-left: 10px;
+  }
+
+  .banner-phrase h2 {
+    font-size: 24px;
+  }
+
+  .banner-search {
+    display: block;
+    margin-left: 15px;
+  }
+  .home-page-search-bar-big {
+    display: none;
+  }
+  .search-bar-container {
+    text-align: left;
+  }
 
   .category-holder {
     display: flex;
@@ -733,6 +775,12 @@ nav a:visited {
   }
 }
 
+@media (min-width: 766px){
+  .header-option-large {
+    display: inline-block;
+  }
+}
+
 @media (min-width: 900px) {
   nav {
     height: 82px;
@@ -765,11 +813,7 @@ nav a:visited {
   }
 }
 
-@media (min-width: 766px){
-  .header-option-large {
-    display: inline-block;
-  }
-}
+
 
 @media (min-width: 1680px) {
   .banner-container{
