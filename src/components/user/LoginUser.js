@@ -42,8 +42,7 @@ class LoginUser extends React.Component {
   render() {
     //console.log('these are the props for my manage user page: ',this.props);
     return(
-      <div>
-        <h1>Manage Users Page</h1>
+      <div className="login-user-page">
         <LoginUserForm
           onChange={this.updateUserState}
           onLogin={this.sendUserLoginRequest}

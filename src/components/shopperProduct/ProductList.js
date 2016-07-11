@@ -12,7 +12,7 @@ const ProductList = ({products, onCreate, onDelete}) => {
   return (
     <div className="product-holder-shopping">
       {products.map(product =>
-          <div key={product.id} className="product-box-shopping">
+          <div key={product.id} className="product-box-shopping grow">
             <div className="product-img-holder-shopping">
               <Link to={'/shop/' + product.id}>
                 <img src={product.image_url} alt=""/>

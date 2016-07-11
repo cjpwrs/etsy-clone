@@ -59,8 +59,6 @@ class ShoppingCartDetails extends React.Component {
     let cartCount = cart.length;
     if(cartCount === 1) cartCount += ' item in your cart';
     else cartCount += ' items in your cart';
-    console.log('Here are the props that we were passed in ', this.props);
-    console.log('here are the products that we receive from props ',products);
 
     return (
       <div className="cart-user-page">

@@ -37,7 +37,7 @@ const Header = (userLoggedIn, user) => {
   }
   return (
     <nav>
-      <IndexLink className="header-logo" to="/">F<span className="header-logo-large">etsy</span></IndexLink>
+      <div className="index-link-div"><IndexLink className="header-logo" to="/">F<span className="header-logo-large">etsy</span></IndexLink></div>
         {headerOptions}
     </nav>
   );

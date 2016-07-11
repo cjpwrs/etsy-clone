@@ -7,7 +7,7 @@ import SelectInput from '../common/SelectInput';
 
 const ProductDetails = ({ product, user, className, onAddToCart, onDelete, onChange, loading, errors}) => {
   return (
-    <div>
+    <div className="product-details-page">
       <div className="details-page-favorite-box">
         <button className="details-page-favorite-button"><span className="glyphicon glyphicon-heart fav-button"></span>Favorite</button>
         <div>

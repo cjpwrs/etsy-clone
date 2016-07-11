@@ -49,6 +49,16 @@ p, h1, h2, h3, h4, h5, li, div, button, a, Link {
   font-family: 'Lato', sans-serif;
 }
 
+/*    Animations     */
+.grow:hover
+{
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+  transition:all 0.3s ease;
+}
+
+
 .blue {
   background: #F0FBFD;
   color: #83CBDC;
@@ -70,8 +80,9 @@ p, h1, h2, h3, h4, h5, li, div, button, a, Link {
   font-size: 14px;
 }
 
-a.active {
+a:active {
   color: #F56400;
+  text-decoration: none;
 }
 
 nav {
@@ -91,18 +102,26 @@ nav a:visited {
   text-decoration: none;
 }
 
-nav Link:hover {
-  text-decoration: none;
-}
-
 .header-logo {
   font-size: 30px;
   font-family: serif;
   color: #F56400;
 }
 
+.index-link-div {
+  display: inline-block;
+  height: 100%;
+  padding-top: 2px;
+}
+
+.header-logo:active {
+  text-decoration: none;
+  color: #F56400;
+}
+
 .header-logo:hover {
   color: #F56400;
+  transition:all 0.3s ease;
 }
 
 .header-register-button {
@@ -122,6 +141,7 @@ nav Link:hover {
 
 .header-signin-button:hover {
   background: lightcyan;
+  transition:all 0.3s ease;
 }
 
 .header-option-large {
@@ -249,6 +269,7 @@ nav Link:hover {
 
 .category-box:hover {
   background: lightgrey;
+  transition:all 0.3s ease;
 }
 
 .category-icon {
@@ -259,6 +280,7 @@ nav Link:hover {
   margin-top: auto;
   margin-bottom: auto;
   color: #524452;
+  line-height: 12px;
 }
 
 .category-arrow {
@@ -398,6 +420,12 @@ nav Link:hover {
 
 
 /*  Product details page styles  */
+
+.product-details-page {
+  max-width:700px;
+  margin: auto;
+}
+
 .details-page-favorite-box {
   background: #E5F4F7;
   height: 71px;
@@ -486,6 +514,7 @@ nav Link:hover {
 /* Shopping Cart page styles */
 .cart-user-page{
   width: 100%;
+  padding: 15px;
 }
 
 .cart-items-holder {
@@ -505,6 +534,8 @@ nav Link:hover {
 
 .cart-img-holder {
   width: 30%;
+  max-width: 230px;
+  margin-right: 5px;
 }
 
 .cart-img-holder img {
@@ -522,6 +553,14 @@ nav Link:hover {
 .cart-price {
   width: 20%;
   text-align: right;
+}
+
+.cart-total {
+  font-size: 34px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 40px;
 }
 
 
@@ -578,6 +617,19 @@ nav Link:hover {
 
 /* This is my manage user form styles */
 
+.login-user-page {
+  background: #F5F5F1;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.login-user-form{
+  padding: 15px;
+  background: #fff;
+  width: 300px;
+  margin: auto;
+}
+
 .manage-user-form {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -587,7 +639,7 @@ nav Link:hover {
 
 .manage-user-options {
   padding: 15px;
-  width: 75%;
+  width: 330px;
   margin:auto;
   background: #fff;
 }
@@ -613,12 +665,18 @@ nav Link:hover {
   .header-logo-large {
     display: inline-block;
   }
-  .header-logo {
-    margin-top: 150px;
-  }
   nav {
     height: 62px;
 
+  }
+  .index-link-div {
+    padding-top: 8px;
+  }
+  .category-box:hover {
+    background: #fff;
+  }
+  .category-text {
+    text-transform: none;
   }
 }
 
@@ -632,6 +690,10 @@ nav Link:hover {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+  }
+  .category-text {
+    margin-top: 5px;
+    font-size: 16px;
   }
   .category-small {
     display: none;
@@ -678,6 +740,9 @@ nav Link:hover {
     padding-right: 50px;
 
   }
+  .index-link-div {
+    padding-top: 10px;
+  }
   .header-logo {
     font-size: 42px;
   }
@@ -690,6 +755,9 @@ nav Link:hover {
     height: 140px;
     margin-bottom: 15px;
 
+  }
+  .category-text {
+    font-size: 14px;
   }
   .header-individual-option-holder {
     border-left: solid .5px lightgrey;

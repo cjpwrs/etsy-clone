@@ -45,7 +45,6 @@ class ManageProductPage extends React.Component {
   deleteProduct(event) {
     event.preventDefault();
     console.log(this.state.product);
-    this.props.actions.deleteProduct(this.state.product.id);
     this.context.router.push('/products');
 
   }

@@ -45,8 +45,6 @@ class ProductDetailsPage extends React.Component {
 
 
   render() {
-    console.log('This is my product details page props',this.props);
-    console.log(this.state);
     return (
       <ProductDetails
         user={this.props.user}

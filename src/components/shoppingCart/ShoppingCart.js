@@ -5,6 +5,11 @@ import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 
 const ShoppingCart = ({products, cart, onCreate, onDelete}) => {
+    let cartTotal = 0;
+    for(let i = 0; i < cart.length; i++){
+        console.log(cart);
+        cartTotal += cart[i].price * cart[i].quantity;
+    }
 
   return (
     <div className="cart-items-holder">
@@ -23,11 +28,12 @@ const ShoppingCart = ({products, cart, onCreate, onDelete}) => {
               <p>Quantity: {cart.quantity}</p>
             </div>
             <div className="cart-price green">
-              <h5>${cart.price}</h5>
+              <h5>${cart.price * cart.quantity}</h5>
 
             </div>
           </div>
       )}
+        <div className="cart-total">Total: ${cartTotal}</div>
     </div>
 
   );

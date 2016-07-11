@@ -7,7 +7,7 @@ import SelectInput from '../common/SelectInput';
 
 const LoginUserForm = ({ user, className, onDelete, onLogin, onChange, loading, errors}) => {
   return (
-    <div>
+    <div className="login-user-form">
       <form>
         <h3>Login</h3>
 
